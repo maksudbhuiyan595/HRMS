@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('role_name');
             $table->string('role_description');
             $table->string('role_status');
-            $table->foreignId('permisssion_id')->nullable();
             $table->timestamps();
 
         });
