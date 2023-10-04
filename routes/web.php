@@ -19,11 +19,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/admin', function () {
-    return view('backend.pages.master');
+    return view('backend.master');
 });
 
 Route::get('/employee/list',[EmployeeController::class,'list'])->name('employee.list');
-Route::get('/role/list',[RoleController::class,'list'])->name('role.list');
-Route::get('/role/form',[RoleController::class,'form'])->name('role.form');
-Route::post('/role/store',[RoleController::class,'store'])->name('role.store');
-Route::get('/role/assign',[RoleController::class,'assign'])->name('role.assign');
+
+//RoleController
+//Role
+Route::get('/role/list',[RoleController::class,'roleList'])->name('role.list');
+Route::get('/role/create',[RoleController::class,'roleCreate'])->name('role.create');
+Route::post('/role/create',[RoleController::class,'roleStore'])->name('role.store');
+Route::get('/role/assign',[RoleController::class,'roleAssign'])->name('role.assign');

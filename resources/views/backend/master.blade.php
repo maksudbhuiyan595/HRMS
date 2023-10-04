@@ -43,11 +43,11 @@
 <body>
 
   <!-- ======= Header ======= -->
- @include('backend.layouts.navbar')
+ @include('backend.layouts.includes.navbar')
   <!-- End Header -->
 
   <!-- ======= Sidebar ======= -->
-  @include('backend.layouts.sidebar')
+  @include('backend.layouts.includes.sidebar')
   <!-- End Sidebar-->
 
   <main id="main" class="main">
@@ -66,7 +66,7 @@
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
-  @include('backend.layouts.footer')
+  @include('backend.layouts.includes.footer')
   <!-- End Footer -->
 
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

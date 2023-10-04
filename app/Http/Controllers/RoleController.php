@@ -7,35 +7,34 @@ use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
-    public function list(){
+    public function roleList(){
 
     $roles=Role::all();
-return view('backend.pages.role.list',compact('roles'));
+    return view('backend.layouts.pages.roles.roleList',compact('roles'));
 
     }
 
-    public function form(){
-        return view('backend.pages.role.form');
+    public function roleCreate(){
+        return view('backend.layouts.pages.roles.roleCreate');
     }
    public function store(Request $request){
-      
-        {
+    $request->validate([
+        'name'=>'required',
+        'status'=>'required',
+        'description'=>'required',
+    ]);
     
-        
-           Role::create([
-                'role_name'=>$request-> name,
-                'role_status'=>$request-> status,
-                'role_description'=>$request-> description
-           
-    
-            ]);
-            return redirect()->route('role.list');
-        }
-        
-    }
-  public function assign(){
-return view('');
+    Role::create([
+        'role_name'=>$request-> name,
+        'role_status'=>$request-> status,
+        'role_description'=>$request->description
+         ]);
 
+     return redirect()->route('role.list');
+
+    }
+  public function roleAssign(){
+    return view ('backend.layouts.pages.roles.roleAssign');
     }
 
 }
