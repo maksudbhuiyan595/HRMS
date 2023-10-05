@@ -32,4 +32,5 @@ Route::group(['prefix'=>'admin'], function(){
 
     // EmployeeController
     Route::get('/employee/list',[EmployeeController::class,'list'])->name('employee.list');
+    Route::get('/employee/create',[EmployeeController::class,'create'])->name('employee.create');
 });

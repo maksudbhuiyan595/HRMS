@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1 class="text-center"><strong>Role Assign permission</strong></h1>
+<h1 class="text-center"><strong>Role Assign Permission</strong></h1>
 <hr>
 <body>
 <div class="container mt-5">
