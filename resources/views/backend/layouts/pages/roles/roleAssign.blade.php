@@ -3,7 +3,7 @@
 
 @section('content')
 
-<h1 class="text-center"><strong>Assign permission</strong></h1>
+<h1 class="text-center"><strong>Role Assign permission</strong></h1>
 <hr>
 <body>
 <div class="container mt-5">
@@ -11,187 +11,22 @@
         <!-- Card 1 -->
         <div class="col-md-3 mb-4">
             <div class="card">
-                {{-- <div class="card-header">Card 1</div> --}}
+               <div class="card-header"><span>Roll ID: </span>{{$role->id}}</div> 
                 <div class="card-body">
-                    User
+                   {{$role->role_name}}
                 </div>
                 <div class="card-footer">
+                    @foreach ($permissions as $key=> $permission)
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            All
+                        <input class="form-check-input" type="checkbox" value="" id="{{++$key}}">
+                        <label class="form-check-label" for="{{$key++}}">
+                            {{$permission->permission_name}}
                         </label>
                     </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            View
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Insert
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Update
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Delete
-                        </label>
-                    </div>
+                    @endforeach
                 </div>
             </div>
-        </div>
-        {{-- card1 end --}}
-
-        <!-- Card 2 -->
-        <div class="col-md-3 mb-4">
-            <div class="card">
-                {{-- <div class="card-header">Card 1</div> --}}
-                <div class="card-body">
-                    Manager
-                </div>
-                <div class="card-footer">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            All
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            View
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Insert
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Update
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Delete
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-         {{-- card 2 end --}}
-         <!-- card 3 -->
-         <div class="col-md-3 mb-4">
-            <div class="card">
-                {{-- <div class="card-header">Card 1</div> --}}
-                <div class="card-body">
-                    Admin
-                </div>
-                <div class="card-footer">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            All
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            View
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Insert
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Update
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Delete
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-         <!-- card 3 end -->
-         <!-- card 4 start -->
-         <div class="col-md-3 mb-4">
-            <div class="card">
-                {{-- <div class="card-header">Card 1</div> --}}
-                <div class="card-body">
-                    Super Admin
-                </div>
-                <div class="card-footer">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            All
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            View
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Insert
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Update
-                        </label>
-                    </div>
-
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="" id="checkbox1">
-                        <label class="form-check-label" for="checkbox1">
-                            Delete
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div><!-- card 4 end -->
+        </div> 
     </div>
 </div>
 

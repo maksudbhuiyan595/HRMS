@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use App\Models\Role;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
     public function roleList(){
-
     $roles=Role::all();
     return view('backend.layouts.pages.roles.roleList',compact('roles'));
 
@@ -17,7 +17,7 @@ class RoleController extends Controller
     public function roleCreate(){
         return view('backend.layouts.pages.roles.roleCreate');
     }
-   public function store(Request $request){
+   public function roleStore(Request $request){
     $request->validate([
         'name'=>'required',
         'status'=>'required',
@@ -33,8 +33,10 @@ class RoleController extends Controller
      return redirect()->route('role.list');
 
     }
-  public function roleAssign(){
-    return view ('backend.layouts.pages.roles.roleAssign');
+  public function roleAssign($id){
+    $role=Role::find($id);
+    $permissions=Permission::all();
+    return view ('backend.layouts.pages.roles.roleAssign',compact('role', 'permissions'));
     }
 
 }

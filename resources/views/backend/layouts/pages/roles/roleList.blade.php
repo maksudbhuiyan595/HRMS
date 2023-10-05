@@ -23,7 +23,7 @@
         <td>{{$data->role_status}}</td>
         <td>{{$data->role_description}}</td>
       <td>
-        <a href="{{route('role.assign')}}" class="btn btn-info">Assign</a> 
+        <a href="{{route('role.assign',$data->id)}}" class="btn btn-info">Assign</a> 
         </td>
       </tr>
     @endforeach
