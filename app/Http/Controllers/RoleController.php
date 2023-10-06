@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Permission;
 use App\Models\Role;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class RoleController extends Controller
@@ -29,7 +30,8 @@ class RoleController extends Controller
         'role_status'=>$request-> status,
         'role_description'=>$request->description
          ]);
-
+    
+    Toastr::success('successfully created.', 'Role');
      return redirect()->route('role.list');
 
     }

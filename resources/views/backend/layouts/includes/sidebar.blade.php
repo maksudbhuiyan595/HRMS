@@ -15,12 +15,12 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
         <li>
-          <a href="">
+          <a href="{{route('employee.create')}}">
             <i class="bi bi-circle"></i><span>Add Employee</span>
           </a>
         </li>
           <li>
-          <a href="">
+          <a href="{{route('employee.list')}}">
             <i class="bi bi-circle"></i><span>Employee Lists</span>
           </a>
         </li>
