@@ -38,6 +38,7 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/role/create',[RoleController::class,'roleCreate'])->name('role.create');
     Route::post('/role/create',[RoleController::class,'roleStore'])->name('role.store');
     Route::get('/role/assign/{id}',[RoleController::class,'roleAssign'])->name('role.assign');
+    Route::post('/role/role-permission',[RoleController::class,'rolePermission'])->name('role.permission');
 
    
 });

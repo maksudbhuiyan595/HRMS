@@ -40,5 +40,7 @@ class RoleController extends Controller
     $permissions=Permission::all();
     return view ('backend.layouts.pages.roles.roleAssign',compact('role', 'permissions'));
     }
-
+public function rolePermission(Request $request){
+    dd($request->all());
+}
 }
