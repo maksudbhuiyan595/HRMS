@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-center mb-3"><strong>Employee Create Form </strong></div>
+                <h1 class="card-header mb-3"><strong> Create Employee </strong></h1>
                     <div class="card-body">
                     
                         <form action="{{route('employee.store')}}" method="post" enctype="multipart/form-data">

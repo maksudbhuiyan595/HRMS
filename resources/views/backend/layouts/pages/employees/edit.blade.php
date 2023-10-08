@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-center mb-3"><strong>Employee Edit </strong></div>
+                <h1 class="card-header mb-3"><strong>Employee Edit </strong></h1>
                     <div class="card-body">
                     
                         <form action="{{route('employee.update',$employee->id)}}" method="post">

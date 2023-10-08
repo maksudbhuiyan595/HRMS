@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RoleController;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +26,8 @@ Route::get('/admin', function () {
 
 
 Route::group(['prefix'=>'admin'], function(){
+
+    Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
     
      // EmployeeController
     Route::get('/employee/list',[EmployeeController::class,'list'])->name('employee.list');
@@ -33,12 +37,21 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/employee/edit/{id}',[EmployeeController::class,'edit'])->name('employee.edit');
     Route::post('/employee/update/{id}',[EmployeeController::class,'update'])->name('employee.update');
     Route::get('/employee/delete/{id}',[EmployeeController::class,'destroy'])->name('employee.destroy');
+    //DepartmentController
+    Route::get('/department/list',[DepartmentController::class, 'list'])->name('department.list');
+    Route::get('/department/create',[DepartmentController::class, 'create'])->name('department.create');
+    Route::post('/department/store',[DepartmentController::class, 'store'])->name('department.store');
+    Route::get('/department/view/{id}',[DepartmentController::class, 'view'])->name('department.view');
+    Route::get('/department/edit/{id}',[DepartmentController::class, 'edit'])->name('department.edit');
+    Route::post('/department/update/{id}',[DepartmentController::class, 'update'])->name('department.update');
+    Route::get('/department/delete/{id}',[DepartmentController::class, 'destroy'])->name('department.destroy');
     //RoleController
     Route::get('/role/list',[RoleController::class,'roleList'])->name('role.list');
     Route::get('/role/create',[RoleController::class,'roleCreate'])->name('role.create');
     Route::post('/role/create',[RoleController::class,'roleStore'])->name('role.store');
     Route::get('/role/assign/{id}',[RoleController::class,'roleAssign'])->name('role.assign');
-    Route::post('/role/role-permission',[RoleController::class,'rolePermission'])->name('role.permission');
+    Route::post('/role/role-permissions',[RoleController::class,'rolePermission'])->name('role.permission');
+    // Route::post('/role/permission/store',[RoleController::class,'permissionStore'])->name('permisssion.store');
 
    
 });

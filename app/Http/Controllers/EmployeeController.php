@@ -38,7 +38,7 @@ class EmployeeController extends Controller
             'emp_img'=>$fileName,
         ]);
         Toastr::success('successfully created.', 'Employee');
-        return redirect()->back();
+        return redirect()->route('employee.list');
     }
     public function view($id){
         $employee=Employee::find($id);
@@ -64,7 +64,7 @@ class EmployeeController extends Controller
             'emp_address'=>$request->address,  
         ]);
         Toastr::success('successfully updated.', 'Employee');
-        return redirect()->back(); 
+        return redirect()->route('employee.list'); 
     }
     public function destroy($id){
         Employee::destroy($id);

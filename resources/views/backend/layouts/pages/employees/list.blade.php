@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header text-center"><strong>Employee Lists</strong></div>
+                <h1 class="card-header text-center "><strong>Employee Lists</strong></h1>
                 <div class="card-body">
                 <table class="table table-striped table-hover">
                     <thead>
