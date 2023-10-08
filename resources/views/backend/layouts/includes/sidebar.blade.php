@@ -28,6 +28,24 @@
       </li><!-- End employees Nav -->
 
       <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#empDesignation" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-menu-button-wide"></i><span>Employee Designations</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="empDesignation" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('emp.designation.create')}}">
+              <i class="bi bi-circle"></i><span>Add Designation</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('emp.designation.list')}}">
+              <i class="bi bi-circle"></i><span>Designation Lists</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End EmpDesignation Nav -->
+
+      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#departments" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Departments</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>

@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
+use App\Http\Controllers\EmpDesignationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RoleController;
+use App\Models\EmpDesignation;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -37,6 +39,13 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/employee/edit/{id}',[EmployeeController::class,'edit'])->name('employee.edit');
     Route::post('/employee/update/{id}',[EmployeeController::class,'update'])->name('employee.update');
     Route::get('/employee/delete/{id}',[EmployeeController::class,'destroy'])->name('employee.destroy');
+    //EmpDesignationcontroller
+    Route::get('employee/designation/list',[EmpDesignationController::class, 'list'])->name('emp.designation.list');
+    Route::get('employee/designation/create',[EmpDesignationController::class, 'create'])->name('emp.designation.create');
+    Route::post('employee/designation/store',[EmpDesignationController::class, 'store'])->name('emp.designation.store');
+    Route::get('employee/designation/edit/{id}',[EmpDesignationController::class, 'edit'])->name('emp.designation.edit');
+    Route::post('employee/designation/update/{id}',[EmpDesignationController::class, 'update'])->name('emp.designation.update');
+    Route::get('employee/designation/delete/{id}',[EmpDesignationController::class, 'destroy'])->name('emp.designation.destroy');
     //DepartmentController
     Route::get('/department/list',[DepartmentController::class, 'list'])->name('department.list');
     Route::get('/department/create',[DepartmentController::class, 'create'])->name('department.create');

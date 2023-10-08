@@ -16,6 +16,7 @@
                         <th scope="col">Phone</th>
                         <th scope="col">Address</th>
                         <th scope="col">Status</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
