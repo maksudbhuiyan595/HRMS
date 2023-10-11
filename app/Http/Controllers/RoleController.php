@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Permission;
 use App\Models\Role;
+use App\Models\RolePermission;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class RoleController extends Controller
 {
@@ -14,7 +16,6 @@ class RoleController extends Controller
     return view('backend.layouts.pages.roles.roleList',compact('roles'));
 
     }
-
     public function roleCreate(){
         return view('backend.layouts.pages.roles.roleCreate');
     }
@@ -36,11 +37,30 @@ class RoleController extends Controller
 
     }
   public function roleAssign($id){
-    $role=Role::find($id);
+    $role=Role::with('permissions')->find($id);                              
+    $assignPermissions=$role->permissions->pluck('permission_id')->toArray();//data convert for array 
     $permissions=Permission::all();
-    return view ('backend.layouts.pages.roles.roleAssign',compact('role', 'permissions'));
+    return view ('backend.layouts.pages.roles.roleAssign',compact('role', 'permissions','assignPermissions'));
     }
-public function rolePermission(){
-    return view('backend.layouts.pages.roles.');
-}
+    public function assignPermission(Request $request, $role_id){
+        // dd($request->all());
+        $validate=Validator::make($request->all(),[
+            'permission'=>'required'
+        ]);
+        if($validate->fails())
+        {
+            dd($validate->getMessageBag());
+        }
+        RolePermission::where('role_id',$role_id)->delete();
+        foreach($request->permission as $permission)
+        {
+            RolePermission::create([
+                'permission_id'=>$permission,
+                'role_id'=>$role_id,
+            ]);
+        }
+            Toastr::success('successfully created', 'Role Permission');
+            return redirect()->back();
+        
+    }
 }

@@ -31,20 +31,14 @@ class CreatePermission extends Command
             foreach($routes as $route)
             {
                 if($route->getPrefix()=='/admin'){
-    
                    Permission::updateOrCreate([
                     'permission_name'=>str_replace("."," ",$route->getName()),
                     'slug'=>$route->getName(),
                    ]);
-    
-                }
-               
+                }   
             }
     
             echo "all permission store successfully.";
         }
-    
-    }
-    
-        
+    }       
 }
