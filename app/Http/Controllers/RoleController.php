@@ -38,9 +38,10 @@ class RoleController extends Controller
   public function roleAssign($id){
     $role=Role::find($id);
     $permissions=Permission::all();
-    return view ('backend.layouts.pages.roles.roleAssign',compact('role', 'permissions'));
+    return view('backend.layouts.pages.roles.roleAssign',compact('role', 'permissions'));
     }
 public function rolePermission(){
-    return view('backend.layouts.pages.roles.');
+    return view('backend.layouts.pages.roles.rolePermission');
 }
+
 }
