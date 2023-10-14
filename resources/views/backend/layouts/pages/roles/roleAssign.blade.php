@@ -1,43 +1,42 @@
 @extends('backend.master')
 @section('content')
-<h1 class="text-center"><strong>Role Assign Permission</strong></h1>
+<h1 class="text-center"><strong>Role Permission for {{ucfirst($role->role_name)}}</strong></h1>
 <hr>
+
 <body>
-<div class="container mt-5">
-    <div class="row">
-        <!-- Card 1 -->
-        <div class="col-md-3 mb-4">
-            <div class="card">
-               <div class="card-header"><span>Roll ID: </span>{{$role->id}}</div> 
-                <div class="card-body">
-                   {{$role->role_name}}
-                </div>
-                    <div class="card-footer">
-                    <div style="float: right;" class="form-check">
-                            <input name="checkbox" class="form-check-input" type="checkbox" value="" id="id">
-                                <label class="form-check-label" for="id">
-                                all
-                                </label> 
-                           </div>
-                        <form action="{{route('role.permission')}}" method="post">
-                            @csrf
-                            @foreach ($permissions as $key=> $permission)
+    <div class="container mt-5">
+        <div class="row">
+            <form action="{{route('assign.permission',$role->id)}}" method="post">
+                <div class="col-md-3 ">
+                    <div class="card">
+                        <div class="card-header text-center mb-3">{{ucfirst($role->role_name)}}</div>
+                        <div class="card-body">
                             <div class="form-check">
-                            
-                                <input name="{{$permission->permission_name}}" class="form-check-input" type="checkbox" value="{{$permission->permission_name}}" id="{{++$key}}">
-                            
-                                <label class="form-check-label" for="{{$key++}}">
-                                    {{$permission->permission_name}}
+                                <input name="checkbox" class="form-check-input" type="checkbox" value="" id="id">
+                                <label class="form-check-label" for="id">
+                                    All Role Permission
+                                </label>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            @csrf
+                            @foreach ($permissions as $permission)
+                            <div class="form-check">
+                                <input name="permission[]" @if (in_array($permission->id,$assignPermissions)) checked
+                                    
+                                @endif class="form-check-input" type="checkbox" value="{{$permission->id}}" id="checkbox1">
+                                <label class="form-check-label" for="checkbox1">
+                                    {{ucfirst($permission->permission_name)}}
                                 </label>
                             </div>
                             @endforeach
-                            <button style="float: right;" type="submit" class="btn btn-success">Submit</button>
-                        </form>
+                        </div>
                     </div>
-            </div><!-- card -->
-        </div> 
+                </div>
+                <button type="submit" class="btn btn-success">Assign Permission</button>
+             </form>
+        </div>
     </div>
-</div>
 
 
-@endsection
+    @endsection

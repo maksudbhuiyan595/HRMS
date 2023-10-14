@@ -60,9 +60,8 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/role/list',[RoleController::class,'roleList'])->name('role.list');
     Route::get('/role/create',[RoleController::class,'roleCreate'])->name('role.create');
     Route::post('/role/create',[RoleController::class,'roleStore'])->name('role.store');
-    Route::get('/role/assign/{id}',[RoleController::class,'roleAssign'])->name('role.assign');
-    Route::post('/role/role-permissions',[RoleController::class,'rolePermission'])->name('role.permission');
-    // Route::post('/role/permission/store',[RoleController::class,'permissionStore'])->name('permisssion.store');
-
+    Route::get('/role/assign/{role_id}',[RoleController::class,'roleAssign'])->name('role.assign');
+    Route::post('/assign-permissions/{role_id}',[RoleController::class,'assignPermission'])->name('assign.permission');
+   
    
 });
