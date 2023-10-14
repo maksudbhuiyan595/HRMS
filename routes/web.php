@@ -28,6 +28,7 @@ Route::get('/admin', function () {
 });
 
 Route::get('/admin/login',[UserController::class,'login'])->name('admin.login');
+Route::get('/admin/dologin',[UserController::class,'dologin'])->name('admin.dologin');
 Route::group(['prefix'=>'admin'], function(){
 
     Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
