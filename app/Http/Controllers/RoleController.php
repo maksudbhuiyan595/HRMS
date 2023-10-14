@@ -40,8 +40,16 @@ class RoleController extends Controller
     $role=Role::with('permissions')->find($id);                              
     $assignPermissions=$role->permissions->pluck('permission_id')->toArray();//data convert for array 
     $permissions=Permission::all();
-    return view ('backend.layouts.pages.roles.roleAssign',compact('role', 'permissions','assignPermissions'));
+
+    return view('backend.layouts.pages.roles.roleAssign',compact('role', 'permissions'));
     }
+public function rolePermission()
+{
+    return view('backend.layouts.pages.roles.rolePermission');
+}
+
+
+    
     public function assignPermission(Request $request, $role_id){
         // dd($request->all());
         $validate=Validator::make($request->all(),[
@@ -63,4 +71,5 @@ class RoleController extends Controller
             return redirect()->back();
         
     }
+
 }

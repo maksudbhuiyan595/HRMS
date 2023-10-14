@@ -5,6 +5,7 @@ use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmpDesignationController;
 use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Models\EmpDesignation;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +27,8 @@ Route::get('/admin', function () {
     return view('backend.master');
 });
 
-
+Route::get('/admin/login',[UserController::class,'login'])->name('admin.login');
+Route::get('/admin/dologin',[UserController::class,'dologin'])->name('admin.dologin');
 Route::group(['prefix'=>'admin'], function(){
 
     Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
