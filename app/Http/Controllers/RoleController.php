@@ -41,7 +41,7 @@ class RoleController extends Controller
     $assignPermissions=$role->permissions->pluck('permission_id')->toArray();//data convert for array 
     $permissions=Permission::all();
 
-    return view('backend.layouts.pages.roles.roleAssign',compact('role', 'permissions'));
+    return view('backend.layouts.pages.roles.roleAssign',compact('role', 'permissions','assignPermissions'));
     }
 public function rolePermission()
 {

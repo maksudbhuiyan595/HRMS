@@ -1,6 +1,6 @@
 @extends('backend.master')
 @section('content')
-<h1 class="text-center"><strong>Role Permission for {{ucfirst($role->role_name)}}</strong></h1>
+<h1 class="text-center"><strong>Role Permission for {{ucfirst($role->id)}}</strong></h1>
 <hr>
 
 <body>
