@@ -6,21 +6,23 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     */
+   
     public function up(): void
     {
         Schema::create('employees', function (Blueprint $table) {
             $table->id();
-            // $table->foreignId('role_id')->constrained('roles');
-            $table->string('emp_name');
-            $table->string('emp_BOB')->nullable();
-            $table->string('emp_email')->unique();
-            $table->string('emp_phone')->unique();
-            $table->string('emp_address')->nullable();
-            $table->string('emp_status')->default('active');
-            $table->string('emp_img')->nullable();
+            $table->string('name');
+            $table->foreignId('empDesignation_id');
+            $table->foreignId('department_id');
+            $table->string('email')->unique();
+            $table->string('phone')->unique();
+            $table->string('gender');
+            $table->date('DOB');
+            $table->string('salary');
+            $table->string('address');
+            $table->date('join_date');
+            $table->string('status')->default('0');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }

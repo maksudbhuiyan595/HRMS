@@ -40,7 +40,7 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/employee/view/{id}',[EmployeeController::class,'view'])->name('employee.view');
     Route::get('/employee/edit/{id}',[EmployeeController::class,'edit'])->name('employee.edit');
     Route::post('/employee/update/{id}',[EmployeeController::class,'update'])->name('employee.update');
-    Route::get('/employee/delete/{id}',[EmployeeController::class,'destroy'])->name('employee.destroy');
+    Route::get('/employee/delete/{id}',[Empdepartment_idloyeeController::class,'destroy'])->name('employee.destroy');
     //EmpDesignationcontroller
     Route::get('employee/designation/list',[EmpDesignationController::class, 'list'])->name('emp.designation.list');
     Route::get('employee/designation/create',[EmpDesignationController::class, 'create'])->name('emp.designation.create');

@@ -19,12 +19,11 @@ class DepartmentController extends Controller
         $request->validate([
             'name'=>'required',
             'location'=>'required',
-            'description'=>'required|max:200',
+            
         ]);
         Department::create([
-            'dep_name'=>$request->name,
-            'dep_location'=>$request->location,
-            'dep_description'=>$request->description,
+            'name'=>$request->name,
+            'location'=>$request->location,
         ]);
         Toastr::success('successfully created', 'Department');
         return redirect()->route('department.list');
@@ -43,12 +42,12 @@ class DepartmentController extends Controller
         $request->validate([
             'name'=>'required|unique:departments,dep_name',$department->id,
             'location'=>'required',
-            'description'=>'required|max:200',
+            
         ]);
-        $department->create([
-            'dep_name'=>$request->name,
-            'dep_location'=>$request->location,
-            'dep_description'=>$request->description,
+        $department->update([
+            'name'=>$request->name,
+            'location'=>$request->location,
+           
         ]);
         Toastr::success('successfully updated', 'Department');
         return redirect()->route('department.list');

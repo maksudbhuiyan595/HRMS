@@ -7,16 +7,19 @@
             <div class="card">
                 <h1 class="card-header text-center "><strong>Employee Lists</strong></h1>
                 <div class="card-body">
-                <table class="table table-striped table-hover">
+                <table class="table border table-hover">
                     <thead>
                         <tr>
                         <th scope="col">#</th>
+                        <th scope="col">Image</th>
                         <th scope="col">Name</th>
+                        <th scope="col">Designation</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Salaray</th>
                         <th scope="col">Email</th>
                         <th scope="col">Phone</th>
                         <th scope="col">Address</th>
-                        <th scope="col">Status</th>
-                        <th scope="col">Image</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -24,16 +27,19 @@
                       @foreach ($employees as $key=>$employee)
                       <tr>
                         <th scope="row">{{++$key}}</th>
-                        <td>{{$employee->emp_name}}</td>
-                        <td>{{$employee->emp_email}}</td>
-                        <td>{{$employee->emp_phone}}</td>
-                        <td>{{$employee->emp_address}}</td>
-                        <td>{{$employee->emp_status}}</td>
-                        
                         <td>
-                            <img style="height: 60px; width: 60px;"
-                             src="{{url('uploads/employees/'.$employee->emp_img)}}" alt="image">
+                            <img class="rounded-pill" style="height: 60px; width: 60px;"
+                            src="{{url('uploads/employees/'.$employee->image)}}" alt="image">
                         </td>
+                        <td>{{$employee->name}}</td>
+                        <td>{{$employee->designation->name}}</td>
+                        <td>{{$employee->department->name}}</td>
+                        <td>{{$employee->status }} </td>
+                        <td>{{$employee->salary}}</td>
+                        <td>{{$employee->email}}</td>
+                        <td>{{$employee->phone}}</td>
+                        <td>{{$employee->address}}</td>
+                        
                        <td>
                             <a class="btn btn-info text-white" href="{{route('employee.view',$employee->id)}}">View</a>
                             <a class="btn btn-primary text-white" href="{{route('employee.edit',$employee->id)}}">Edit</a>

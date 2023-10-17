@@ -1,7 +1,7 @@
 @extends('backend.master')
 
 @section('content')
-<section class="employee">
+<section class="department">
     <div class="row">
         <div class="col-md-12">
             <div class="card">
@@ -14,7 +14,6 @@
                         <th scope="col">Name</th>
                         <th scope="col">Location</th>
                         <th scope="col">Status</th>
-                        <th scope="col">Descriptions</th>
                         <th scope="col">Action</th>
                         </tr>
                     </thead>
@@ -22,10 +21,9 @@
                       @foreach($departments as $key=>$department)
                         <tr>
                             <td>{{++$key}}</td>
-                            <td>{{$department->dep_name}}</td>
-                            <td>{{$department->dep_location}}</td>
-                            <td>{{$department->dep_status}}</td>
-                            <td>{{$department->dep_description}}</td>
+                            <td>{{$department->name}}</td>
+                            <td>{{$department->location}}</td>
+                            <td>{{$department->status ?? ''}}</td>
                             <td>
                                 <a href="{{route('department.view',$department->id)}}" class="btn btn-primary">View</a>
                                 <a href="{{route('department.edit',$department->id)}}" class="btn btn-info">Edit</a>

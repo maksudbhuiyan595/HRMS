@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Department;
+use App\Models\EmpDesignation;
 use App\Models\Employee;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -9,17 +11,26 @@ use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
     public function list(){
-        $employees=Employee::paginate(8);
+        $employees=Employee::with(['designation', 'department'])->orderBy('id','desc')->paginate(10);
         return view('backend.layouts.pages.employees.list',compact('employees'));
     }
     public function create(){
-        return view ('backend.layouts.pages.employees.create');
+        $designatins= EmpDesignation::orderBy('id','desc')->get();
+        $departments=Department::orderBy('id','desc')->get();
+        return view ('backend.layouts.pages.employees.create',compact('designatins','departments'));
     }
     public function store(Request $request){
-        // dd($request->all());
+       try{
         $request->validate([
-            'name'=>'required',
+            'first_name'=>'required',
+            'last_name'=>'required',
             'email'=>'required',
+            'empDesignation_id'=>'required',
+            'department_id'=>'required',
+            'salary'=>'required',
+            'DOB'=>'required',
+            'gender'=>'required',
+            'join_date'=>'required',
             'phone'=>'required|max:15',
             'address'=>'required',
             'image'=>'required|image|mimes:jpeg,png,jpg,svg'
@@ -31,14 +42,25 @@ class EmployeeController extends Controller
             // dd($fileName);
         }
         Employee::create([
-            'emp_name'=>$request->name,
-            'emp_email'=>$request->email,
-            'emp_phone'=>$request->phone,
-            'emp_address'=>$request->address,
-            'emp_img'=>$fileName,
+            'name'=>$request->first_name.$request->last_name,
+            'email'=>$request->email,
+            'phone'=>$request->phone,
+            'address'=>$request->address,
+            'empDesignation_id'=>$request->empDesignation_id,
+            'department_id'=>$request->department_id,
+            'salary'=>$request->salary,
+            'DOB'=>$request->DOB,
+            'gender'=>$request->gender,
+            'join_date'=>$request->join_date,
+            'image'=>$fileName,
         ]);
-        Toastr::success('successfully created.', 'Employee');
-        return redirect()->route('employee.list');
+    }
+    catch(\Exception $e){
+        Toastr::error('Ops !!'.$e->getMessage());
+        return redirect()->back();
+    }
+    Toastr::success('successfully created.', 'Employee');
+    return redirect()->route('employee.list');
     }
     public function view($id){
         $employee=Employee::find($id);
