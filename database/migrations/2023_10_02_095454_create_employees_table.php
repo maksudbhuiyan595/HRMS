@@ -15,6 +15,7 @@ return new class extends Migration
             $table->foreignId('empDesignation_id');
             $table->foreignId('department_id');
             $table->string('email')->unique();
+            $table->string('password');
             $table->string('phone')->unique();
             $table->string('gender');
             $table->date('DOB');

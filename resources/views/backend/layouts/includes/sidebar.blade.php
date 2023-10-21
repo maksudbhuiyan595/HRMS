@@ -8,6 +8,8 @@
           <span>Dashboard</span>
         </a>
       </li><!-- End Dashboard Nav -->
+    
+       
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="#">
@@ -15,14 +17,19 @@
         </a>
         <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
+            @if (checkUserPermission('employee.create'))
             <a href="{{route('employee.create')}}">
               <i class="bi bi-circle"></i><span>Add Employee</span>
             </a>
+            @endif
           </li>
           <li>
+            @if (checkUserPermission('employee.list'))
+              
             <a href="{{route('employee.list')}}">
-              <i class="bi bi-circle"></i><span>Employee Lists</span>
+              <i class="bi bi-circle"></i><span>Employees List</span>
             </a>
+            @endif
           </li>
         </ul>
       </li><!-- End employees Nav -->
@@ -39,7 +46,7 @@
           </li>
           <li>
             <a href="{{route('emp.designation.list')}}">
-              <i class="bi bi-circle"></i><span>Designation Lists</span>
+              <i class="bi bi-circle"></i><span>Designations List</span>
             </a>
           </li>
         </ul>
@@ -57,13 +64,39 @@
           </li>
           <li>
             <a href="{{route('department.list')}}">
-              <i class="bi bi-circle"></i><span>Department Lists</span>
+              <i class="bi bi-circle"></i><span>Departments List</span>
             </a>
           </li>
         </ul>
       </li><!-- End departments Nav -->
 
-
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#attendences" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Attendences</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="attendences" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('attendence.create')}}">
+              <i class="bi bi-circle"></i><span>Add Attendence</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('attendence.list')}}">
+              <i class="bi bi-circle"></i><span>Attendences List</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="bi bi-circle"></i><span>Leave</span>
+            </a>
+          </li>
+          <li>
+            <a href="">
+              <i class="bi bi-circle"></i><span>Leave Types</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End departments Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#roles" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Roles</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -76,11 +109,29 @@
           </li>
           <li>
             <a href="{{route('role.list')}}">
-              <i class="bi bi-circle"></i><span>Role Lists</span>
+              <i class="bi bi-circle"></i><span>Roles List</span>
             </a>
           </li>
         </ul>
       </li><!-- End Roles Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#users" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Users</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="users" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('user.create')}}">
+              <i class="bi bi-circle"></i><span>Add User</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('user.list')}}">
+              <i class="bi bi-circle"></i><span>Users list</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End users Nav -->
 
      
 

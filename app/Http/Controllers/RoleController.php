@@ -36,7 +36,8 @@ class RoleController extends Controller
      return redirect()->route('role.list');
 
     }
-  public function roleAssign($id){
+  public function roleAssign($id)
+  {
     $role=Role::with('permissions')->find($id);                              
     $assignPermissions=$role->permissions->pluck('permission_id')->toArray();//data convert for array 
     $permissions=Permission::all();

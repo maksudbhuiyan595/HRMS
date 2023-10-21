@@ -25,6 +25,7 @@ class EmployeeController extends Controller
             'first_name'=>'required',
             'last_name'=>'required',
             'email'=>'required',
+            'password'=>'required',
             'empDesignation_id'=>'required',
             'department_id'=>'required',
             'salary'=>'required',
@@ -44,6 +45,7 @@ class EmployeeController extends Controller
         Employee::create([
             'name'=>$request->first_name.$request->last_name,
             'email'=>$request->email,
+            'password'=>bcrypt($request->password),
             'phone'=>$request->phone,
             'address'=>$request->address,
             'empDesignation_id'=>$request->empDesignation_id,
@@ -56,7 +58,7 @@ class EmployeeController extends Controller
         ]);
     }
     catch(\Exception $e){
-        Toastr::error('Ops !!'.$e->getMessage());
+        Toastr::error('Ops !! '.$e->getMessage());
         return redirect()->back();
     }
     Toastr::success('successfully created.', 'Employee');

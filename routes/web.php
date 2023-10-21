@@ -1,36 +1,36 @@
 <?php
 
+use App\Http\Controllers\AttendenceController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmpDesignationController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\Frontend\WebController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Models\EmpDesignation;
 use Illuminate\Support\Facades\Route;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "web" middleware group. Make something great!
-|
-*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/admin', function () {
-    return view('backend.master');
-});
 
-Route::get('/admin/login',[UserController::class,'login'])->name('admin.login');
-Route::get('/admin/dologin',[UserController::class,'dologin'])->name('admin.dologin');
-Route::group(['prefix'=>'admin'], function(){
+//Frontend homeController
+Route::get('/',[WebController::class,'homePage'])->name('home.page');
 
+
+
+
+Route::group(['prefix'=> 'admin'], function () {
+
+  Route::get('/login',[UserController::class,'login'])->name('admin.login');
+  Route::post('/do-login',[UserController::class,'doLogin'])->name('admin.dologin');
+
+  Route::group(['middleware'=> ['auth','checkPermission']], function () {
+
+    Route::get('/logout',[UserController::class,'logout'])->name('logout');
+
+  
+    Route::get('/',[HomeController::class,'home'])->name('home');
     Route::get('/dashboard',[DashboardController::class, 'dashboard'])->name('dashboard');
     
      // EmployeeController
@@ -40,7 +40,7 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/employee/view/{id}',[EmployeeController::class,'view'])->name('employee.view');
     Route::get('/employee/edit/{id}',[EmployeeController::class,'edit'])->name('employee.edit');
     Route::post('/employee/update/{id}',[EmployeeController::class,'update'])->name('employee.update');
-    Route::get('/employee/delete/{id}',[Empdepartment_idloyeeController::class,'destroy'])->name('employee.destroy');
+    Route::get('/employee/delete/{id}',[EmployeeController::class,'destroy'])->name('employee.destroy');
     //EmpDesignationcontroller
     Route::get('employee/designation/list',[EmpDesignationController::class, 'list'])->name('emp.designation.list');
     Route::get('employee/designation/create',[EmpDesignationController::class, 'create'])->name('emp.designation.create');
@@ -56,12 +56,39 @@ Route::group(['prefix'=>'admin'], function(){
     Route::get('/department/edit/{id}',[DepartmentController::class, 'edit'])->name('department.edit');
     Route::post('/department/update/{id}',[DepartmentController::class, 'update'])->name('department.update');
     Route::get('/department/delete/{id}',[DepartmentController::class, 'destroy'])->name('department.destroy');
+
+    //ProjectController
+  /*   Route::get('/project/list',[ProjectController::class, 'list'])->name('project.list');
+    Route::get('/project/create',[ProjectController::class, 'create'])->name('project.create');
+    Route::post('/project/store',[ProjectController::class, 'store'])->name('project.store');
+    Route::get('/project/view/{id}',[ProjectController::class, 'view'])->name('project.view');
+    Route::get('/project/edit/{id}',[ProjectController::class, 'edit'])->name('project.edit');
+    Route::post('/project/update/{id}',[ProjectController::class, 'update'])->name('project.update');
+    Route::get('/project/delete/{id}',[ProjectController::class, 'destroy'])->name('project.destroy');
+     */
+
+        //DepartmentController
+        Route::get('/attendence/list',[AttendenceController::class, 'list'])->name('attendence.list');
+        Route::get('/attendence/create',[AttendenceController::class, 'create'])->name('attendence.create');
+        Route::post('/attendence/store',[AttendenceController::class, 'store'])->name('attendence.store');
+        Route::get('/attendence/view/{id}',[AttendenceController::class, 'view'])->name('attendence.view');
+        Route::get('/attendence/edit/{id}',[AttendenceController::class, 'edit'])->name('attendence.edit');
+        Route::post('/attendence/update/{id}',[AttendenceController::class, 'update'])->name('attendence.update');
+
     //RoleController
     Route::get('/role/list',[RoleController::class,'roleList'])->name('role.list');
     Route::get('/role/create',[RoleController::class,'roleCreate'])->name('role.create');
     Route::post('/role/create',[RoleController::class,'roleStore'])->name('role.store');
     Route::get('/role/assign/{role_id}',[RoleController::class,'roleAssign'])->name('role.assign');
     Route::post('/assign-permissions/{role_id}',[RoleController::class,'assignPermission'])->name('assign.permission');
+
+    Route::get('users/list',[UserController::class,'list'])->name('user.list');
+    Route::get('user/create',[UserController::class,'create'])->name('user.create');
+    Route::post('user/store',[UserController::class,'store'])->name('user.store');
+    Route::get('user/view/{userId}',[UserController::class,'view'])->name('user.view');
+    Route::get('user/edit/{id}',[UserController::class,'edit'])->name('user.edit');
+    Route::get('user/update/{id}',[UserController::class,'update'])->name('user.update');   
+    Route::get('user/destroy/{id}',[UserController::class,'destroy'])->name('user.destroy');   
    
-   
+});
 });

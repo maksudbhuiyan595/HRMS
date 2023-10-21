@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Role extends Model
 {
     use HasFactory;
-protected $guarded=[];
+    protected $guarded=[];
 
-public function permissions(){
-    return $this->hasMany(RolePermission::class);
-}
+    // role have many permissions
+    public function permissions(){
+        return $this->hasMany(RolePermission::class);
+    }
 
 }

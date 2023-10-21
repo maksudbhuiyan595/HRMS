@@ -84,16 +84,6 @@
                                     <input type="radio" name="gender"   value="female"> <span>Female</span>
                                     <input type="radio" name="gender"   value="oteher"> <span>Other</span>
                                 </div>
-                                <div class="mb-3">
-                                    <label for="">Salary:</label>
-                                    <input type="number" name="salary" class="form-control @error('salary') is-invalid @enderror" placeholder="Number" value="{{old('salary')}}">
-
-                                    @error('salary')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
 
                             </div><!-- col-md-6 -->
                             <div class="col-md-6">
@@ -124,16 +114,6 @@
                                     @enderror
                                 </div>
                                 <div class="mb-3">
-                                    <label for="">Password:</label>
-                                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="password" value="{{old('password')}}">
-
-                                    @error('password')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                                <div class="mb-3">
                                     <label for="">Address:</label>
                                     <input type="text" name="address" class="form-control @error('address') is-invalid @enderror" placeholder="address" value="{{old('address')}}">
 
@@ -153,12 +133,11 @@
                                     </span>
                                     @enderror
                                 </div>
-                    
                                 <div class="mb-3">
-                                    <label for="">Image </label>
-                                    <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
-                                    
-                                    @error('image')
+                                    <label for="">Salary:</label>
+                                    <input type="number" name="salary" class="form-control @error('salary') is-invalid @enderror" placeholder="Number" value="{{old('salary')}}">
+
+                                    @error('salary')
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
@@ -168,8 +147,18 @@
                         </div><!-- row -->
                         
                         
+                        <div class="mb-3">
+                            <label for="">Image </label>
+                            <input type="file" name="image" class="form-control @error('image') is-invalid @enderror">
+                            
+                            @error('image')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
+                        </div>
 
-                        <button type="submit ritht-pull" class="btn btn-md btn-success">Submit Data</button>
+                        <button type="submit" class="btn btn-md btn-success">Submit Data</button>
                     </form>
                 </div>
             </div>
