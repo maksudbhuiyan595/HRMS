@@ -19,6 +19,4 @@ function checkUserPermission($route)
 }
 
 
-
-
 ?>

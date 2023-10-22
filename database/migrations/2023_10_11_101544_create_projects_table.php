@@ -14,7 +14,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('description')->nullable();
             $table->string('status')->default('active');
-            $table->string('duration')->nullable();
+            $table->date('start_date');
+            $table->date('end_date');
             $table->foreignId('department_id'); 
             $table->foreignId('employee_id'); 
             $table->timestamps();
