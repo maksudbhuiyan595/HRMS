@@ -40,18 +40,23 @@
         </a>
         <ul id="empDesignation" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
+            @if(checkUserPermission('emp.designation.create'))
             <a href="{{route('emp.designation.create')}}">
               <i class="bi bi-circle"></i><span>Add Designation</span>
             </a>
+            @endif
+
           </li>
           <li>
+          @if(checkUserPermission('emp.designation.list'))
             <a href="{{route('emp.designation.list')}}">
               <i class="bi bi-circle"></i><span>Designations List</span>
             </a>
+            @endif
           </li>
         </ul>
       </li><!-- End EmpDesignation Nav -->
-
+  
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#departments" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Departments</span><i class="bi bi-chevron-down ms-auto"></i>
@@ -69,6 +74,24 @@
           </li>
         </ul>
       </li><!-- End departments Nav -->
+
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#project" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Projects</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+        <ul id="projrcts" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="{{route('project.create')}}">
+              <i class="bi bi-circle"></i><span>Add Projects</span>
+            </a>
+          </li>
+          <li>
+            <a href="{{route('project.list')}}">
+              <i class="bi bi-circle"></i><span>Projects List</span>
+            </a>
+          </li>
+        </ul>
+      </li><!-- End project Nav -->
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#attendences" data-bs-toggle="collapse" href="#">
@@ -96,7 +119,7 @@
             </a>
           </li>
         </ul>
-      </li><!-- End departments Nav -->
+      </li><!-- End attendance Nav -->
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#roles" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Roles</span><i class="bi bi-chevron-down ms-auto"></i>

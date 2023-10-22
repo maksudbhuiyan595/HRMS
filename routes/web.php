@@ -58,14 +58,14 @@ Route::group(['prefix'=> 'admin'], function () {
     Route::get('/department/delete/{id}',[DepartmentController::class, 'destroy'])->name('department.destroy');
 
     //ProjectController
-  /*   Route::get('/project/list',[ProjectController::class, 'list'])->name('project.list');
+    Route::get('/project/list',[ProjectController::class, 'list'])->name('project.list');
     Route::get('/project/create',[ProjectController::class, 'create'])->name('project.create');
     Route::post('/project/store',[ProjectController::class, 'store'])->name('project.store');
     Route::get('/project/view/{id}',[ProjectController::class, 'view'])->name('project.view');
     Route::get('/project/edit/{id}',[ProjectController::class, 'edit'])->name('project.edit');
     Route::post('/project/update/{id}',[ProjectController::class, 'update'])->name('project.update');
     Route::get('/project/delete/{id}',[ProjectController::class, 'destroy'])->name('project.destroy');
-     */
+    
 
         //DepartmentController
         Route::get('/attendence/list',[AttendenceController::class, 'list'])->name('attendence.list');
