@@ -25,7 +25,6 @@
           </li>
           <li>
             @if (checkUserPermission('employee.list'))
-              
             <a href="{{route('employee.list')}}">
               <i class="bi bi-circle"></i><span>Employees List</span>
             </a>
@@ -40,15 +39,21 @@
         </a>
         <ul id="empDesignation" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-            @if(checkUserPermission('emp.designation.create'))
+
+
+          @if (checkUserPermission('emp.designation.create'))
+
             <a href="{{route('emp.designation.create')}}">
               <i class="bi bi-circle"></i><span>Add Designation</span>
             </a>
             @endif
 
+
           </li>
+         
           <li>
-          @if(checkUserPermission('emp.designation.list'))
+          @if (checkUserPermission('emp.designation.list'))
+
             <a href="{{route('emp.designation.list')}}">
               <i class="bi bi-circle"></i><span>Designations List</span>
             </a>
@@ -63,14 +68,19 @@
         </a>
         <ul id="departments" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
+            
+            @if (checkUserPermission('department.create'))
             <a href="{{route('department.create')}}">
               <i class="bi bi-circle"></i><span>Add Department</span>
             </a>
+            @endif
           </li>
           <li>
+          @if (checkUserPermission('department.list'))
             <a href="{{route('department.list')}}">
               <i class="bi bi-circle"></i><span>Departments List</span>
             </a>
+            @endif
           </li>
         </ul>
       </li><!-- End departments Nav -->
@@ -99,14 +109,18 @@
         </a>
         <ul id="attendences" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
+          @if (checkUserPermission('attendence.create'))
             <a href="{{route('attendence.create')}}">
               <i class="bi bi-circle"></i><span>Add Attendence</span>
             </a>
+            @endif
           </li>
           <li>
+          @if (checkUserPermission('attendence.list'))
             <a href="{{route('attendence.list')}}">
               <i class="bi bi-circle"></i><span>Attendences List</span>
             </a>
+            @endif
           </li>
           <li>
             <a href="">
@@ -126,14 +140,18 @@
         </a>
         <ul id="roles" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
+          @if (checkUserPermission('role.create'))
             <a href="{{route('role.create')}}">
               <i class="bi bi-circle"></i><span>Add Role</span>
             </a>
+            @endif
           </li>
           <li>
+          @if (checkUserPermission('role.list'))
             <a href="{{route('role.list')}}">
               <i class="bi bi-circle"></i><span>Roles List</span>
             </a>
+            @endif
           </li>
         </ul>
       </li><!-- End Roles Nav -->
@@ -144,14 +162,18 @@
         </a>
         <ul id="users" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
+          @if (checkUserPermission('user.create'))
             <a href="{{route('user.create')}}">
               <i class="bi bi-circle"></i><span>Add User</span>
             </a>
+            @endif
           </li>
           <li>
+          @if (checkUserPermission('user.list'))
             <a href="{{route('user.list')}}">
               <i class="bi bi-circle"></i><span>Users list</span>
             </a>
+            @endif
           </li>
         </ul>
       </li><!-- End users Nav -->
