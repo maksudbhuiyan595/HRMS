@@ -86,22 +86,28 @@
       </li><!-- End departments Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#project" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#projects" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Projects</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="projrcts" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="projects" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
+            
+           
             <a href="{{route('project.create')}}">
-              <i class="bi bi-circle"></i><span>Add Projects</span>
+              <i class="bi bi-circle"></i><span>Add project</span>
             </a>
+          
           </li>
           <li>
+          
             <a href="{{route('project.list')}}">
-              <i class="bi bi-circle"></i><span>Projects List</span>
+              <i class="bi bi-circle"></i><span>projects List</span>
             </a>
+           
           </li>
         </ul>
       </li><!-- End project Nav -->
+
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#attendences" data-bs-toggle="collapse" href="#">

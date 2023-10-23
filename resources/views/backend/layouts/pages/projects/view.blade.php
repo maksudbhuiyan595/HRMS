@@ -5,16 +5,17 @@
     <div class="row">
         <div class="col-md-8 offset-md-2">
             <div class="card">
-                <div class="card-header text-center mb-3"><strong>Employee Details</strong></div>
+                <h1 class="card-header text-center mb-3"><strong>Project Details</strong></h1>
                 <div class="card-body">
-                    <h5><span>Image: </span>
-                    <img style="height: 160px; width: 160px;"
-                     src="{{url('uploads/employees/'.$employee->emp_img)}}" alt="image"></h5>
-                    <h5><span>Name: </span>{{$employee->emp_name}}</h5>
-                    <h5><span>Email: </span>{{$employee->emp_email}}</h5>
-                    <h5><span>Phone: </span>{{$employee->emp_phone}}</h5>
-                    <h5><span>Address: </span>{{$employee->emp_address}}</h5>
-                    <!-- <h5><span>Status: </span>{{$employee->emp_status}}</h5> -->
+                    
+                    <h5><span>Name: </span>{{$projects->name}}</h5>
+                    <h5><span>Status: </span>{{$projects->status}}</h5>
+                    <h5><span>Start Date:</span>{{$projects->start_date}}</h5>
+                    <h5><span>End Date:</span>{{$projects->end_date}}</h5>
+                    <h5><span>Department:</span>{{$projects->department->name}}</h5>
+                    <h5><span>Employee:</span>{{$projects->employee->name}}</h5>
+                    <h5><span>Description: </span>{{$projects->description}}</h5>
+                  
                 </div>
             </div>
         </div>
