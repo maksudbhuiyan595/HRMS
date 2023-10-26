@@ -236,29 +236,29 @@
       <!-- End payroll Nav -->
       
 
-      @if (checkUserPermission('role.list'))
+     
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#roles" data-bs-toggle="collapse" href="#">
           <i class="bi bi-layout-text-window-reverse"></i><span>Roles</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="roles" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
-          @if (checkUserPermission('role.create'))
+        
             <a href="{{route('role.create')}}">
               <i class="bi bi-circle"></i><span>Add Role</span>
             </a>
-            @endif
+           
           </li>
           <li>
-          @if (checkUserPermission('role.list'))
+          
             <a href="{{route('role.list')}}">
               <i class="bi bi-circle"></i><span>Roles List</span>
             </a>
-          @endif
+        
           </li>
         </ul>
       </li>
-      @endif
+      
       <!-- End Roles Nav -->
 
       @if (checkUserPermission('user.list'))

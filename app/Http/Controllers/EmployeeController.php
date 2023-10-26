@@ -20,14 +20,17 @@ class EmployeeController extends Controller
     public function ajaxEmployee()
     {
 
-        $data = Employee::select('*')->get();
+        $data = Employee::with(['designation', 'department'])->orderBy('id','desc')->get();
         return DataTables::of($data)
-                ->addIndexColumn()
-                ->addColumn('action', function($row){
+                    
+                     ->addIndexColumn()
+                     ->addColumn('action', function($row){
 
                        $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+                       $btn2 = '<a href="javascript:void(0)" class="edit btn btn-warning btn-sm">Edit</a>';
+                       $btn3 = '<a href="javascript:void(0)" class="edit btn btn-danger btn-sm">Delete</a>';
 
-                        return $btn;
+                        return $btn.$btn2.$btn3;
                 })
                 ->rawColumns(['action'])
                 ->make(true);
@@ -65,7 +68,8 @@ class EmployeeController extends Controller
             // dd($fileName);
         }
         Employee::create([
-            'name'=>$request->first_name.$request->last_name,
+            'first_name'=>$request->first_name,
+            'last_name'=>$request->last_name,
             'email'=>$request->email,
             'password'=>bcrypt($request->password),
             'phone'=>$request->phone,

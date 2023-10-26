@@ -10,7 +10,8 @@
                     <thead>
                         <tr>
                         <th scope="col">#</th>
-                        <th scope="col">Name</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
                         <th scope="col">Designation</th>
                         <th scope="col">Department</th>
                         <th scope="col">Email</th>
@@ -46,7 +47,8 @@
           ajax: "{{ route('employee.ajaxEmployee') }}",
           columns: [
               { data: 'id', name: 'id' },
-              { data: 'name', name: 'name' },
+              { data: 'first_name', name: 'first_name' },
+              { data: 'last_name', name: 'last_name' },
               { data: 'empDesignation_id', name: 'empDesignation_id' },
               { data: 'department_id', name: 'department_id' },
               { data: 'email', name: 'email' },
@@ -55,7 +57,7 @@
               { data: 'DOB', name: 'DOB' },
               { data: 'salary', name: 'salary' },
               { data: 'address', name: 'address' },
-              { data: 'join_date', name: 'join_date' },
+              { data: 'join_date', name: 'join_date' },   
               { data: 'status', name: 'status' },
               { data: 'image', name: 'image' },
               {
