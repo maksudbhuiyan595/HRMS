@@ -15,20 +15,20 @@ class UsersTableSeeder extends Seeder
     {
         User::create([
             
-                "name"=> "Admin",
+             "name"=> "Admin",
                 "email"=> "admin@gmail.com",
                 "password"=> bcrypt("123456"),
                 "role"=> "admin",
                 'role_id'=>1,  
-
+            
             
            
               /*   'name'=> 'Manager',
                 'email'=> 'manager@gmail.com',
                 'password'=> bcrypt('123456'),
                 'role'=> 'manager',
-                'role_id'=>2,  */
-             
+                'role_id'=>2, 
+              */
         ]);
     }
 }

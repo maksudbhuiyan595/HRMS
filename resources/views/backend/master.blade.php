@@ -9,13 +9,13 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
-  <link href="https://fonts.gstatic.com" rel="preconnect">
-  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Nunito:300,300i,400,400i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Vendor CSS Files -->
   <link href="{{asset('ui/backend')}}/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -31,13 +31,14 @@
   <!-- Template Main CSS File -->
   <link href="{{asset('ui/backend')}}/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: NiceAdmin
-  * Updated: Aug 30 2023 with Bootstrap v5.3.1
-  * Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <!-- ======================== -->
+  <!-- yajra links -->
+  
+  <link href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
+  <!-- ======================== -->
+
+
+
 </head>
 
 <body>
@@ -80,13 +81,24 @@
   <script src="{{asset('ui/backend')}}/assets/vendor/simple-datatables/simple-datatables.js"></script>
   <script src="{{asset('ui/backend')}}/assets/vendor/tinymce/tinymce.min.js"></script>
   <script src="{{asset('ui/backend')}}/assets/vendor/php-email-form/validate.js"></script>
-<!-- toastr -->
+  
+  <!-- toastr -->
   <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
-        <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
-        {!! Toastr::message() !!}
-
+  <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+  {!! Toastr::message() !!}
+  
   <!-- Template Main JS File -->
   <script src="{{asset('ui/backend')}}/assets/js/main.js"></script>
+
+<!-- yajra start links -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
+<!-- yajra end links -->
+  
+
+<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+
+@stack('js')
 
 </body>
 

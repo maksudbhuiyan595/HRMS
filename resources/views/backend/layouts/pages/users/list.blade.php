@@ -10,8 +10,6 @@
         <th scope="col">ID</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
-        <th scope="col">Password</th>
-        <th scope="col">Role Name</th>
         <th scope="col">Role </th>
         <th scope="col">Action</th>
       </tr>
@@ -22,8 +20,6 @@
           <td>{{++$key}}</td>
           <td>{{$user->name}}</td>
           <td>{{$user->email}}</td>
-          <td>{{$user->password}}</td>
-          <td></td>
           <td>{{$user->role}}</td>
           <td>
             <a class="btn btn-info" href="">View</a>

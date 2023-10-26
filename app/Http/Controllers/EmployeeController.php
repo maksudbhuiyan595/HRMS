@@ -5,19 +5,41 @@ namespace App\Http\Controllers;
 use App\Models\Department;
 use App\Models\EmpDesignation;
 use App\Models\Employee;
+use DataTables;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 
 class EmployeeController extends Controller
 {
     public function list(){
-        $employees=Employee::with(['designation', 'department'])->orderBy('id','desc')->paginate(10);
-        return view('backend.layouts.pages.employees.list',compact('employees'));
+        //  $employees=Employee::with(['designation', 'department'])->orderBy('id','desc')->get();
+        
+        return view('backend.layouts.pages.employees.list');
+       
     }
+    public function ajaxEmployee()
+    {
+
+        $data = Employee::select('*')->get();
+        return DataTables::of($data)
+                ->addIndexColumn()
+                ->addColumn('action', function($row){
+
+                       $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
+
+                        return $btn;
+                })
+                ->rawColumns(['action'])
+                ->make(true);
+
+
+    }
+    
     public function create(){
-        $designatins= EmpDesignation::orderBy('id','desc')->get();
-        $departments=Department::orderBy('id','desc')->get();
+       $designatins= EmpDesignation::all();
+        $departments=Department::all();
         return view ('backend.layouts.pages.employees.create',compact('designatins','departments'));
+       
     }
     public function store(Request $request){
        try{
