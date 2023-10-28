@@ -25,7 +25,7 @@
                     @foreach($projects as $key=>$project)
                         <tr>
                             <td>{{++$key}}</td>
-                            <td>{{$project->name}}</td>
+                            <td>{{$project->full_name}}</td>
                             <td>{{$project->status ?? ''}}</td>
                             <td>{{$project->start_date}}</td>
                             <td>{{$project->end_date}}</td>
