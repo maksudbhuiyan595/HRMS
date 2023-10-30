@@ -87,7 +87,7 @@
       @endif
       
       <!-- End departments Nav -->
-      @if (checkUserPermission('project.list'))
+ 
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#projects" data-bs-toggle="collapse" href="#">
@@ -96,22 +96,36 @@
         <ul id="projects" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
             
-          @if (checkUserPermission('project.create'))
+         
             <a href="{{route('project.create')}}">
-              <i class="bi bi-circle"></i><span>Add project</span>
+              <i class="bi bi-circle"></i><span>Add Project</span>
             </a>
-          @endif
+         
           </li>
           <li>
-          @if (checkUserPermission('project.list'))
+         
             <a href="{{route('project.list')}}">
-              <i class="bi bi-circle"></i><span>projects List</span>
+              <i class="bi bi-circle"></i><span>Lists Project</span>
             </a>
-           @endif
+      
+          </li>
+          <li>
+    
+            <a href="{{route('assign.employee.project')}}">
+              <i class="bi bi-circle"></i><span>Add Employees to Project </span>
+            </a>
+        
+          </li>
+          <li>
+        
+            <a href="{{route('employee.list.project')}}">
+              <i class="bi bi-circle"></i><span>Employees list to Project</span>
+            </a>
+        
           </li>
         </ul>
       </li>
-      @endif
+     
       <!-- End project Nav -->
 
       @if (checkUserPermission('attendence.list'))

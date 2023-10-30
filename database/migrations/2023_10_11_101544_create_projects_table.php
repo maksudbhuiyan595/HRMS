@@ -12,12 +12,11 @@ return new class extends Migration
         Schema::create('projects', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description')->nullable();
-            $table->string('status')->default('active');
+            $table->foreignId('department_id'); 
             $table->date('start_date');
             $table->date('end_date');
-            $table->foreignId('department_id'); 
-            $table->foreignId('employee_id'); 
+            $table->string('status')->default('active');
+            $table->string('description')->nullable();
             $table->timestamps();
         });
     }

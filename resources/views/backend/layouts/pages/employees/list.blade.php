@@ -49,8 +49,8 @@
               { data: 'id', name: 'id' },
               { data: 'first_name', name: 'first_name' },
               { data: 'last_name', name: 'last_name' },
-              { data: 'empDesignation_id', name: 'empDesignation_id' },
-              { data: 'department_id', name: 'department_id' },
+              { data: 'designation', name: 'designation.name' },
+              { data: 'department', name: 'department.name' },
               { data: 'email', name: 'email' },
               { data: 'phone', name: 'phone' },
               { data: 'gender', name: 'gender' },
@@ -60,12 +60,12 @@
               { data: 'join_date', name: 'join_date' },   
               { data: 'status', name: 'status' },
               { data: 'image', name: 'image' },
-              {
+             /*  {
                   data: 'action', 
                   name: 'action', 
                   orderable: true, 
                   searchable: true
-                },
+                }, */
         ]
     });
     

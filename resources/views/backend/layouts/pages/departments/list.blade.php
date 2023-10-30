@@ -23,7 +23,7 @@
                             <td>{{++$key}}</td>
                             <td>{{$department->name}}</td>
                             <td>{{$department->location}}</td>
-                            <td>{{$department->status ?? ''}}</td>
+                            <td class="text-success ">{{$department->status ? '':'active'}}</td>
                             <td>
                                 <a href="{{route('department.view',$department->id)}}" class="btn btn-primary">View</a>
                                 <a href="{{route('department.edit',$department->id)}}" class="btn btn-info">Edit</a>

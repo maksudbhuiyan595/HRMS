@@ -55,21 +55,7 @@
                                     </span>
                                      @enderror
                             </div>
-                            <div class="mb-3">
-                                <label for="">Employee:</label>
-                                 <select name="employee_id" class="form-control" id="">
-                                   <option value=""> Select One</option>
-                                   @forelse($employees as $key=> $value)
-                                   <option value="{{$value->id}}">{{$value->name}}</option>
-                                   @endforeach
-                                 </select>
-
-                                     @error('employee')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                     @enderror
-                            </div>
+                
                             <div class="mb-3">
                                 <label for="">Description:</label>
                                     <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" placeholder="Description" value="{{old('description')}}">

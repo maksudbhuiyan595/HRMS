@@ -67,6 +67,8 @@ Route::group(['prefix'=> 'admin'], function () {
     Route::get('/project/edit/{id}',[ProjectController::class, 'edit'])->name('project.edit');
     Route::post('/project/update/{id}',[ProjectController::class, 'update'])->name('project.update');
     Route::get('/project/delete/{id}',[ProjectController::class, 'destroy'])->name('project.destroy');
+    Route::get('/assign/employee/to-project',[ProjectController::class, 'assignEployeeToProject'])->name('assign.employee.project');
+    Route::get('/employees/list/to-project',[ProjectController::class, 'EmployeesListToProject'])->name('employee.list.project');
     
 
         //DepartmentController

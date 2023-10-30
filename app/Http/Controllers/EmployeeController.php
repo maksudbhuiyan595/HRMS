@@ -17,24 +17,29 @@ class EmployeeController extends Controller
         return view('backend.layouts.pages.employees.list');
        
     }
+   
     public function ajaxEmployee()
     {
 
         $data = Employee::with(['designation', 'department'])->orderBy('id','desc')->get();
+        
         return DataTables::of($data)
-                    
-                     ->addIndexColumn()
-                     ->addColumn('action', function($row){
 
+                    ->editColumn('designation', function($data)
+                    {
+                    return $data->designation;
+                    })
+                    ->editColumn('department', function($data)
+                    {
+                    return $data->department;
+                    })
+                        
+                     /* ->addColumn('action', function($row){
                        $btn = '<a href="javascript:void(0)" class="edit btn btn-primary btn-sm">View</a>';
-                       $btn2 = '<a href="javascript:void(0)" class="edit btn btn-warning btn-sm">Edit</a>';
-                       $btn3 = '<a href="javascript:void(0)" class="edit btn btn-danger btn-sm">Delete</a>';
-
-                        return $btn.$btn2.$btn3;
-                })
-                ->rawColumns(['action'])
-                ->make(true);
-
+                        return $btn;
+                     })
+                    ->rawColumns(['action']) */
+                    ->make(true);
 
     }
     
