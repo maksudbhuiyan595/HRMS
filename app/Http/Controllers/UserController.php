@@ -13,10 +13,11 @@ class UserController extends Controller
 {
     public function login()
     {
-        return view("frontend.layouts.loginPage");
+        return view("backend.layouts.pages.loginPage");
     }
     public function doLogin(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             "email"=> "required|email|unique:users,id",
             "password"=> "required|min:6|max:16"

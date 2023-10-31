@@ -27,10 +27,9 @@
       
       </ul>
       <form class="d-flex"  >
-        <p></p>
-       <a class="btn" href="{{ route('customer.login') }}">Login</a>
-       <a class="btn " href="{{route('customer.register')}}">Register</a>
-       <a class="btn " href="{{route('admin.login')}}">Admin</a>
+      <p> {{ auth()->guard('customer')->user()->full_name}}</p>
+        
+        <a class="btn" href="{{ route('customer.logout') }}">Logout</a>
       </form>
     </div>
   </div>

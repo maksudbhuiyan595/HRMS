@@ -5,6 +5,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DepartmentController;
 use App\Http\Controllers\EmpDesignationController;
 use App\Http\Controllers\EmployeeController;
+use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\WebController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProjectController;
@@ -17,7 +18,11 @@ use Illuminate\Support\Facades\Route;
 //Frontend homeController
 Route::get('/',[WebController::class,'homePage'])->name('home.page');
 
-
+Route::get('/customer/register',[CustomerController::class,'customerRegister'])->name('customer.register');
+Route::post('/customer/update/register',[CustomerController::class,'customerUpdateRegister'])->name('customer.update.register');
+Route::get('customer/login',[CustomerController::class,'customerLogin'])->name('customer.login');
+Route::post('customer/do-login',[CustomerController::class,'customerDologin'])->name('customer.dologin');
+Route::get('customer/logout',[CustomerController::class,'customerLogout'])->name('customer.logout');
 
 
 Route::group(['prefix'=> 'admin'], function () {
