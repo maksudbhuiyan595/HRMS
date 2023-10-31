@@ -3,11 +3,14 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\forgetPasswordMail;
 use App\Models\Customer;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class CustomerController extends Controller
 {
@@ -72,4 +75,34 @@ class CustomerController extends Controller
         Toastr::success('successfully loglot','Customer');
         return redirect()->route('home.page');
     }
+
+   
+   public function sendResetLink(Request $request)
+   {
+
+    // dd($request->all());
+        $validate=validator::make(request()->all(), [
+            'email'=> 'required',
+        ]);
+        if( $validate->fails() ){
+            Toastr::error($validate->getMessageBag());
+            return redirect()->back();
+        }
+        $customer=Customer::where('email', $request->email)->first();
+        if($customer){
+            //link= route+token
+            //token create
+            $token=str::random(32);
+            $link=route('click.reset.link',$token);
+
+            Mail::to($customer->email)->send(new forgetPasswordMail($link));
+
+            Toastr::success('Reset link sent to your email.');
+            return redirect()->back();
+          
+
+        }
+        Toastr::error('No User Found');
+        return redirect()->back();
+   }
 }

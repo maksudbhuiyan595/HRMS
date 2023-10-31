@@ -25,6 +25,10 @@ Route::post('customer/do-login',[CustomerController::class,'customerDologin'])->
 Route::get('customer/logout',[CustomerController::class,'customerLogout'])->name('customer.logout');
 
 
+Route::post('send/passwod/reset-link',[CustomerController::class,'sendResetLink'])->name('send.reset.link');
+Route::get('click-reset-link/{token}',[CustomerController::class,'clickResetLink'])->name('click.reset.link');
+
+
 Route::group(['prefix'=> 'admin'], function () {
 
   Route::get('/login',[UserController::class,'login'])->name('admin.login');
@@ -101,3 +105,5 @@ Route::group(['prefix'=> 'admin'], function () {
    
 });
 });
+
+
