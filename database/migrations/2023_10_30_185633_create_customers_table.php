@@ -17,6 +17,8 @@ return new class extends Migration
             $table->string('last_name');
             $table->string('email')->unique('email');
             $table->string('password');
+            $table->string('token')->nullable();
+            $table->dateTime('token_expired_at')->nullable();
             $table->string('image')->nullable();
             $table->rememberToken()->nullable();
             $table->timestamps();

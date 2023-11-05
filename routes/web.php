@@ -27,6 +27,7 @@ Route::get('customer/logout',[CustomerController::class,'customerLogout'])->name
 
 Route::post('send/passwod/reset-link',[CustomerController::class,'sendResetLink'])->name('send.reset.link');
 Route::get('click-reset-link/{token}',[CustomerController::class,'clickResetLink'])->name('click.reset.link');
+Route::post('reset-password/{token}',[CustomerController::class,'resetPassword'])->name('reset.password');
 
 
 Route::group(['prefix'=> 'admin'], function () {

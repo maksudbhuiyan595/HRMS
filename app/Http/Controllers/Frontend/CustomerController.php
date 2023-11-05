@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Mail\forgetPasswordMail;
 use App\Models\Customer;
 use Brian2694\Toastr\Facades\Toastr;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
@@ -72,7 +73,7 @@ class CustomerController extends Controller
     public function customerLogout()
     {
         Auth::guard('customer')->logout();
-        Toastr::success('successfully loglot','Customer');
+        Toastr::success('successfully logout','Customer');
         return redirect()->route('home.page');
     }
 
@@ -93,6 +94,10 @@ class CustomerController extends Controller
             //link= route+token
             //token create
             $token=str::random(32);
+            $customer->update([
+                'token'=>$token,
+                'token_expired_at'=>Carbon::now()->addMinutes(3),
+            ]);
             $link=route('click.reset.link',$token);
 
             Mail::to($customer->email)->send(new forgetPasswordMail($link));
@@ -105,4 +110,47 @@ class CustomerController extends Controller
         Toastr::error('No User Found');
         return redirect()->back();
    }
+
+   public function clickResetLink($token)
+   {
+    $customer=Customer::where('token',$token)->whereDate('token_expired_at','=',now())
+                    ->whereTime('token_expired_at','>=',now())
+                    ->first();
+
+
+    if($customer)
+    {
+        return view('frontend.layouts.mail.reset-password',compact('token'));
+    }
+    Toastr::error('Token Expired or Invalid Customer');
+    return redirect()->route('customer.login');
+
+   }
+   public function resetPassword(Request $request, $token)
+   {
+
+       $validate=Validator::make($request->all(),[
+           'password'=>'required|confirmed'
+       ]);
+
+       if($validate->fails())
+       {
+         Toastr::error($validate->getMessageBag());
+         return redirect()->back();  
+       }
+
+       $customer=Customer::where('token',$token)->first();
+       if($customer)
+       {    
+        
+           $customer->update([
+               'password'=>bcrypt($request->password)
+           ]) ? Customer::destroy($token) : null;
+       }
+
+       Toastr::success('Your password reset successfully.');
+       return redirect()->route('customer.login');
+       
+   }
+
 }
