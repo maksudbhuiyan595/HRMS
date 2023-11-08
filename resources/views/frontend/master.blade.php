@@ -27,7 +27,12 @@
       
       </ul>
       <form class="d-flex"  >
-        <p></p>
+       
+        <select name="lang" class="form-control" id="" onchange="location = this.options[this.selectedIndex].value;">
+          <option @if(session()->get('locale')=='en') selected @endif value="{{ route('change.lang','en') }}">English</option>
+          <option @if(session()->get('locale')=='bn') selected @endif value="{{ route('change.lang','bn') }}" value="">Bangla</option>
+          <option @if(session()->get('locale')=='ar') selected @endif value="{{ route('change.lang','ar') }}" value="">Arabic</option>
+        </select>
        <a class="btn" href="{{ route('customer.login') }}">Login</a>
        <a class="btn " href="{{route('customer.register')}}">Register</a>
        <a class="btn " href="{{route('admin.login')}}">Admin</a>

@@ -14,9 +14,11 @@ use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 
+Route::group(['middleware'=>'local'],function(){
 
 //Frontend homeController
 Route::get('/',[WebController::class,'homePage'])->name('home.page');
+Route::get('/change-lang/{lang}', [WebController::class, 'changeLang'])->name('change.lang');
 
 Route::get('/customer/register',[CustomerController::class,'customerRegister'])->name('customer.register');
 Route::post('/customer/update/register',[CustomerController::class,'customerUpdateRegister'])->name('customer.update.register');
@@ -107,4 +109,4 @@ Route::group(['prefix'=> 'admin'], function () {
 });
 });
 
-
+});
