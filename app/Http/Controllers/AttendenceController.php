@@ -12,6 +12,7 @@ class AttendenceController extends Controller
     public function list()
     {   
         $attendences=Attendence::with('employee')->orderBy("created_at","desc")->paginate(10);
+       
         return view("backend.layouts.pages.attendences.list",compact("attendences"));
     }
 

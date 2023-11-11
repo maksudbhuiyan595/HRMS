@@ -7,7 +7,7 @@
     <div class="container mt-5">
         <div class="row">
             <form action="{{route('assign.permission',$role->id)}}" method="post">
-                <div class="col-md-3 ">
+                <div class="col-md-4">
                     <div class="card">
                         <div class="card-header text-center mb-3">{{ucfirst($role->role_name)}}</div>
                         <div class="card-body">

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('leaves', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('leave_name');
             $table->string('status')->default('0');
             $table->date('start_date');
             $table->date('end_date');

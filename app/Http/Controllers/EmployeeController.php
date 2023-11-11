@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 class EmployeeController extends Controller
 {
     public function list(){
-        //  $employees=Employee::with(['designation', 'department'])->orderBy('id','desc')->get();
+         $employees=Employee::with(['designation', 'department'])->orderBy('id','desc')->get();
         
         return view('backend.layouts.pages.employees.list');
        

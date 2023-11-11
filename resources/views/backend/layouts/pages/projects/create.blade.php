@@ -57,14 +57,10 @@
                             </div>
                 
                             <div class="mb-3">
-                                <label for="">Description:</label>
-                                    <input type="text" name="description" class="form-control @error('description') is-invalid @enderror" placeholder="Description" value="{{old('description')}}">
-  
-                                    @error('description')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                     @enderror
+                                <label>Description:</label>
+                                    <textarea name="description" class="form-control" id="description">
+                                        {{old('description')}}
+                                    </textarea>
                             </div>
                             <div class="mb-3">
                             <button type="submit" class="btn btn-md btn-success">Submit</button>
@@ -76,4 +72,6 @@
         </div>
     </div>
 </section>
+
+
 @endsection

@@ -13,7 +13,7 @@ class ProjectController extends Controller
 {
    public function list()
    {
-    $projects=Project::with(['department'])->get();
+    $projects=Project::with(['department'])->orderBy("id","desc")->get();
     return view('backend.layouts.pages.projects.list',compact('projects'));
    }
 
@@ -23,14 +23,14 @@ class ProjectController extends Controller
       return view('backend.layouts.pages.projects.create',compact( 'departments'));
     }
   public function store(Request $request){
-      try{
+//    dd($request->all());
           
           $request->validate([
               'name'=>'required',
               'start_date'=>'required',
               'end_date'=>'required',
               'department_id'=>'required',
-              'description'=>'required'
+             
               
             ]);
             
@@ -41,10 +41,7 @@ class ProjectController extends Controller
            'department_id'=>$request->department_id,
            'description'=>$request->description
        ]);
-    }catch (Exception $e){
-        Toastr::error('error', $e->getMessage());
-        return redirect()->back();
-    }
+    
     Toastr::success('successfully created', 'Project');
     return redirect()->route('project.list');
 }

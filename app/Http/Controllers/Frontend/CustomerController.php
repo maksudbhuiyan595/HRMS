@@ -62,7 +62,7 @@ class CustomerController extends Controller
         if(auth()->guard("customer")->attempt($customer)){
 
             Toastr::success("successfully login" ,"Customer");
-            return view("frontend.layouts.home");
+            return redirect()->route('home');
         }
             
         Toastr::error('Invalid user');
@@ -72,7 +72,7 @@ class CustomerController extends Controller
     public function customerLogout()
     {
         Auth::guard('customer')->logout();
-        Toastr::success('successfully loglot','Customer');
+        Toastr::success('successfully logout','Customer');
         return redirect()->route('home.page');
     }
 
@@ -93,7 +93,9 @@ class CustomerController extends Controller
             //link= route+token
             //token create
             $token=str::random(32);
-            $link=route('click.reset.link',$token);
+
+
+            $link=route('send.reset.link',$token);
 
             Mail::to($customer->email)->send(new forgetPasswordMail($link));
 
@@ -105,4 +107,5 @@ class CustomerController extends Controller
         Toastr::error('No User Found');
         return redirect()->back();
    }
+  
 }

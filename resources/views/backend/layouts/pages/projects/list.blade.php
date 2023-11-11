@@ -36,7 +36,11 @@
                             <td>{{$project->department->name}}</td>
                             <td>{{$project->start_date}}</td>
                             <td>{{$project->end_date}}</td>
-                            <td>{{$project->description}}</td>
+                            <td>
+                                @php
+                                    echo $project->description;
+                                @endphp
+                            </td>
                             <td>
                                 <a href="{{route('assign.employee.project',$project->id)}}" class="btn btn-secondary">Assign</a>
                                 <a href="{{route('project.view',$project->id)}}" class="btn btn-info">View</a>
@@ -54,3 +58,5 @@
 </section>
 
 @endsection
+
+

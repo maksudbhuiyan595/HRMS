@@ -26,11 +26,14 @@ class UserController extends Controller
         $credentials=$request->except(['_token']);
         if(auth()->attempt($credentials))
         {
+
+            // dd('success');
             toastr()->success('wow !! successfully login.');
             return redirect()->route('dashboard');
         }
         else
         {
+            // dd('error');
             Toastr::error('Invalid user informations');
             return redirect()->back();
         }

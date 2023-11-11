@@ -8,6 +8,8 @@ use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\Frontend\CustomerController;
 use App\Http\Controllers\Frontend\WebController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\LeaveController;
+use App\Http\Controllers\LeaveTypeController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
@@ -88,7 +90,18 @@ Route::group(['prefix'=> 'admin'], function () {
         Route::get('/attendence/edit/{id}',[AttendenceController::class, 'edit'])->name('attendence.edit');
         Route::post('/attendence/update/{id}',[AttendenceController::class, 'update'])->name('attendence.update');
 
+        //LeaveController
+        Route::get('/leave/list',[LeaveController::class, 'list'])->name('leave.list');
+
+        //LeaveTypeController
+        Route::get('/leave-type/list',[LeaveTypeController::class, 'list'])->name('leave.type.list');
+        Route::get('/leave-type/create',[LeaveTypeController::class, 'create'])->name('leave.type.create');
+        Route::post('/leave-type/store',[LeaveTypeController::class, 'store'])->name('leave.type.store');
+        Route::get('/leave-type/view/{id}',[LeaveTypeController::class, 'view'])->name('leave.type.view');
+        Route::get('/leave-type/edit/{id}',[LeaveTypeController::class, 'edit'])->name('leave.type.edit');
+        Route::post('/leave-type/update/{id}',[LeaveTypeController::class, 'update'])->name('leave.type.update');
     //RoleController
+
     Route::get('/role/list',[RoleController::class,'roleList'])->name('role.list');
     Route::get('/role/create',[RoleController::class,'roleCreate'])->name('role.create');
     Route::post('/role/create',[RoleController::class,'roleStore'])->name('role.store');

@@ -25,7 +25,7 @@
                                 <select name="employee_id" class="form-control @error('employee_id') is-invalid @enderror" value="{{old('employee_id')}}">
                                     <option value="">Select One</option>
                                     @forelse ($employees as $key=>$value)
-                                    <option value="{{$value->id}}">{{$value->name}}</option> 
+                                    <option value="{{$value->id}}">{{$value->full_name}}</option> 
                                     @empty
                                             <option class="bg-danger"> no employee --</option>
                                     @endforelse
