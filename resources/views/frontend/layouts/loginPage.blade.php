@@ -14,11 +14,11 @@
                         @csrf
                         <div class="mb-3">
                             <label for="login">UserName:</label>
-                            <input type="email" name="email" class="form-control" placeholder="write username" id="login">
+                            <input type="email" name="email" class="form-control" placeholder="write username" id="login" value="sadia@gmail.com">
                         </div>
                         <div class="mb-3">
                             <label for="password">Password:</label>
-                            <input type="password" name="password" class="form-control" placeholder="password" id="password">
+                            <input type="password" name="password" class="form-control" placeholder="password" id="password" value="123456">
                         </div>
                         <!-- Button trigger modal -->
                         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">

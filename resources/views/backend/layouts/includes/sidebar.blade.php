@@ -91,7 +91,7 @@
 
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#projects" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Projects</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>Project</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="projects" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -131,7 +131,7 @@
       @if (checkUserPermission('attendence.list'))
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#attendences" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Attendences</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-layout-text-window-reverse"></i><span>Attendence</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="attendences" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -148,7 +148,12 @@
             </a>
             @endif
           </li>
-         
+      
+          <li>
+            <a href="">
+              <i class="bi bi-circle"></i><span>Attendence Report</span>
+            </a>
+          </li>
         </ul>
       </li>
       @endif
@@ -156,21 +161,28 @@
 
       
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#leaves" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Leaves</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#leave" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Leave</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="leaves" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="leave" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
          
             <a href="">
-              <i class="bi bi-circle"></i><span>Add </span>
+              <i class="bi bi-circle"></i><span>List </span>
             </a>
             
           </li>
           <li>
         
+            <a href="{{route('leave.type.list')}}">
+              <i class="bi bi-circle"></i><span>Leave Type </span>
+            </a>
+          
+          </li>
+          <li>
+        
             <a href="">
-              <i class="bi bi-circle"></i><span> List</span>
+              <i class="bi bi-circle"></i><span>Leave Balance</span>
             </a>
           
           </li>
@@ -178,33 +190,10 @@
       </li> 
      
       <!-- End leaves Nav -->
-       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#types" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Leave Types</span><i class="bi bi-chevron-down ms-auto"></i>
-        </a>
-        <ul id="types" class="nav-content collapse " data-bs-parent="#sidebar-nav">
-          <li>
-         
-            <a href="">
-              <i class="bi bi-circle"></i><span>Add </span>
-            </a>
-            
-          </li>
-          <li>
-        
-            <a href="">
-              <i class="bi bi-circle"></i><span>list </span>
-            </a>
-          
-          </li>
-        </ul>
-      </li> 
-      
-      <!-- End leave types Nav -->
 
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#notices" data-bs-toggle="collapse" href="#">
-          <i class="bi bi-layout-text-window-reverse"></i><span>Notices</span><i class="bi bi-chevron-down ms-auto"></i>
+        <a class="nav-link collapsed" data-bs-target="#notice list" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Notice List</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="notices" class="nav-content collapse " data-bs-parent="#sidebar-nav">
           <li>
@@ -224,7 +213,22 @@
         </ul>
       </li> 
       
-      <!-- End notices Nav -->
+      <!-- End notices  list Nav -->
+      <li class="nav-item">
+        <a class="nav-link collapsed" data-bs-target="#holidays" data-bs-toggle="collapse" href="#">
+          <i class="bi bi-layout-text-window-reverse"></i><span>Holiday List</span><i class="bi bi-chevron-down ms-auto"></i>
+        </a>
+
+        <ul id="holidays" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+          <li>
+            <a href="">
+              <i class="bi bi-circle"></i><span> List</span>
+            </a>
+          </li>
+        </ul>
+      </li> 
+      
+      <!-- End Holyday list Nav -->
 
      <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#payroll" data-bs-toggle="collapse" href="#">

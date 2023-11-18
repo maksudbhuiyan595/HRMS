@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\customerRegistrationMail;
 use App\Mail\forgetPasswordMail;
 use App\Models\Customer;
 use Brian2694\Toastr\Facades\Toastr;
@@ -21,11 +22,12 @@ class CustomerController extends Controller
     }
     public function customerUpdateRegister(Request $request)
     {
+        // dd($request->all());
         $validate = Validator::make($request->all(), [
             "fname"=>"required",
             "lname"=>"required",
             "email"=> "required",
-            "password"=> "required",
+            "password"=> "required |min:6 |max:12",
 
         ]);
         if ($validate->fails())
@@ -33,16 +35,65 @@ class CustomerController extends Controller
             Toastr::error($validate->getMessageBag());
             return redirect()->back();
         }
-      Customer::create([
+        $otp=rand(100000,999999);
+        // dd($otp);
+      $customer=Customer::create([
         "first_name"=> $request->fname,
         "last_name"=> $request->lname,
         "email"=> $request->email,
         "password"=> bcrypt($request->password),
+        'otp'=>$otp,
+        'otp_expired_at'=> Carbon::now()->addMinutes(3)
       ]);
+
+
+      Mail::to($customer->email)->send(new customerRegistrationMail($otp));
       Toastr::success("successfully register");
-      return redirect()->back();
+
+      return redirect()->route('otp.form');
 
     }
+    public function otpForm(){
+        return view('frontend.layouts.otp');
+    }
+    public function otpVerified(Request $request)
+    {
+       $validate=validator::make($request->all(),[
+        'otp'=>'required |digits:6'
+       ]);
+       if($validate->fails()){
+        Toastr::error($validate->getMessageBag());
+       }
+       
+       $otpExitCustomer=Customer::where('otp',$request->otp)->first();
+       
+       
+       if($otpExitCustomer)
+       {
+
+        // dd($otpExitCustomer);
+            if($otpExitCustomer->otp_expired_at >=now())
+            {
+                if ($otpExitCustomer->email_verified_at == null) 
+                    {
+                        //verify here
+                        $otpExitCustomer->update([
+                            'otp'=>null,
+                            'otp_expired_at'=>null,
+                            'email_verified_at'=>now(),
+                        ]);
+                        toastr()->success('successfully verified.');
+                        return redirect()->route('customer.login');
+                     }
+            }
+            toastr()->error('Customer not verfied.');
+            return redirect()->back();
+       }
+       toastr()->error('Invalid Customer.');
+       return redirect()->back();
+    }
+
+
     public function customerLogin()
     {
         return view("frontend.layouts.loginPage");
@@ -61,7 +112,12 @@ class CustomerController extends Controller
         $customer=$request->except("_token");
         // dd($customer);
         if(auth()->guard("customer")->attempt($customer)){
+            if(auth('customer')->user()->email_verified_at != null){
 
+                Toastr::success('Login Success.');
+                return redirect()->route('home.page');
+            }
+            auth('customer')->logout();
             Toastr::success("successfully login" ,"Customer");
             return view("frontend.layouts.home");
         }

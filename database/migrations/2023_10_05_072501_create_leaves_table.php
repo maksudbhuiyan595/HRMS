@@ -17,8 +17,11 @@ return new class extends Migration
             $table->string('status')->default('0');
             $table->date('start_date');
             $table->date('end_date');
+            $table->string('day');
             $table->foreignId('leave_type_id');
             $table->foreignId('employee_id');
+            $table->text('description');
+            
             $table->timestamps();
         });
     }
